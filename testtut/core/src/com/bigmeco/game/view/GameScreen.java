@@ -18,12 +18,13 @@ public class GameScreen implements Screen {
     private Car car;
     private OrthographicCamera camera;
 
+    public static float deltaCff;
     @Override
     public void show() {
         batch = new SpriteBatch();
         carTexture = new Texture(Gdx.files.internal("badlogic.jpg"));
         carTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        car = new Car(carTexture, 0, 0, 46, 46);
+        car = new Car(carTexture, 0, 0, 2, 2);
     }
 
     private float move = 0f;
@@ -32,6 +33,7 @@ public class GameScreen implements Screen {
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        deltaCff = delta;
         move++;
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
